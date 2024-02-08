@@ -1,26 +1,29 @@
-import './LoginMasyarakat.css'
-
 const LoginMasyarakat = () => {
     return(
-        <section>
-            <h1>Login Masyarakat</h1>
-            <div class="card">
-                <h1>Sign in</h1>
-                <p class="small">Sign in to check your registration progress</p>
+        <section className="hero">
+            <div className="login-container masyarakat">
+                <h1>Sign in<br/>Masyarakat</h1>
                 <form action="#">
-                <div class="form-content">
-                    <input type="text" name="username" id="username" placeholder="Username"/>
-                </div>
-                <div class="form-content">
-                    <input type="password" name="password" id="password" placeholder="Password"/>
-                </div>
-                <p><a href="#">Forgot password?</a></p>
-                <button class="submit">Sign in</button>
-                <p class="divider"><span>or</span></p>
-                <button class="social"><i class="fa-brands fa-google"></i> Sign in with Google</button>
+                    <div className="form-content">
+                        <label>Pilih wilayah anda :</label>
+                        <select className='inputbox' id="fruit" name="fruit">
+                            <option value="Masyarakat Airmadidi Bawah">Masyarakat Kelurahan Airmadidi Bawah</option>
+                            <option value="Masyarakat Watutumou Dua">Masyarakat Desa Watutumou Dua</option>
+                        </select>
+                    </div>
+                    <div className="form-content">
+                        <input className='inputbox typed' type="email" name="email" id="email" placeholder="Email Address"/>
+                    </div>
+                    <div className="form-content">
+                        <input className='inputbox typed' type="password" name="password" id="password" placeholder="Password"/>
+                    </div>
+                    <a href="#">Forgot password?</a>
+                    <div className="buttons-masyarakat">
+                        <button class="submit masyarakat">Sign in</button>
+                        <button className="register masyarakat">Register</button>
+                    </div>
                 </form>
             </div>
-            <footer>Don't have account? <a href="#">Join now</a></footer>
         </section>
     )
 }

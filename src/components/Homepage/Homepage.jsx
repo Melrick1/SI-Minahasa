@@ -28,7 +28,7 @@ const Homepage = () => {
     };
 
     return(
-        <section className="hero">
+        <section className="home-hero hero">
             <div className='homecard'>
                 <div>
                     <img src="/LogoMinahasaUtara.png" width={getAdjustedWidth()} alt="Logo"></img>
