@@ -1,0 +1,95 @@
+.hero{
+    background: url(/src/assets/Background-MU.jpeg) top center;
+    background-size:cover;
+}
+
+.hero::before {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.homecard{
+    z-index: 1;
+    position: relative;
+    justify-content: center;
+    min-height: 250px;
+    text-align: left;
+    gap: 5rem;
+}
+
+.homecard h2{
+    padding: 1rem;
+}
+
+.homecard-buttons{
+    margin-top: 3rem;
+    display: inline-block;
+    text-decoration: none;    
+}
+
+.homecard-link{
+    display: inline-block;
+    width: 150px;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 25px;
+    background-color: lightblue;
+    color: black;
+}
+
+.homecard-link:hover{
+    color: purple;
+}
+
+/* Large screen */
+@media only screen and (min-width: 961px){
+    .homecard{
+        padding-top: 10rem;
+        display: flex;
+    }
+
+    .homecard-link{
+        margin-right: 3rem;
+    }
+}
+
+/* medium screen */
+@media only screen and (max-width: 960px){
+    .homecard{
+        padding-top: 5rem;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .homecard-link{
+        margin: 0 1rem;
+    }
+
+    .homecard-buttons{
+        margin-top: 2rem;
+    }
+}
+
+/* small screen */
+@media only screen and (max-width: 540px){
+    .homecard{
+        padding-top: 3rem;
+    }
+
+    .homecard-link{
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .homecard-buttons{
+        margin-top: 1rem;
+    }
+}
