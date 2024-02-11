@@ -28,7 +28,7 @@ const Register = () => {
                             <i className={`bi bi-eye${showPassword2 ? '-slash' : ''}`}></i>
                         </span>
                     </div>
-                    <a href="#">Forgot password?</a>
+                    <Link to="/login-masyarakat">Back to login</Link>
                     <button className="submit admin">Register</button>
                 </form>
             </div>
