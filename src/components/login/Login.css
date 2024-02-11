@@ -21,11 +21,21 @@
 }
 
 /* Input */
-.login-container .inputbox{
+.form-content{
+    padding: 0;
+    margin: 0.2rem auto 1rem auto;
+    max-width: 250px;
+    min-width: 250px;
     border: 2px solid #d6d6d6;
     border-radius: 5px;
+    background-color: rgb(56, 56, 56);
+
+}
+
+.login-container .inputbox{
+    border: none;
     padding: 10px;
-    margin-bottom: 1rem;
+    outline: none;
 }
 
 .login-container select{
@@ -33,7 +43,22 @@
 }
 
 .login-container .typed{
-    width: 225px;
+    width: 230px;
+}
+
+.login-container .pass{
+    width: 203px;
+    border-right: 1px solid white;
+}
+
+/* Password toggle */
+.form-content i{
+    margin: 0.25rem;
+    font-size: 1.1rem;
+}
+
+.form-content i:hover{
+    cursor: pointer;
 }
 
 /* Button */
