@@ -1,12 +1,15 @@
 import { useState } from 'react';
 
 const usePasswordToggle = () => {
-    const [showPassword, setShowPassword] = useState(false);
+    //Sign Toggles
+    const [showPassword, setShowPassword] = useState(false); 
+    
+    //Register Toggles
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
 
     const handleTogglePassword = () => {
-        setShowPassword(!showPassword1);
+        setShowPassword(!showPassword);
     };
 
     const handleTogglePassword1 = () => {
