@@ -6,6 +6,7 @@ import './index.css'
 import App from './App.jsx'
 import LoginAdmin from './components/login/LoginAdmin.jsx'
 import LoginMasyarakat from './components/login/LoginMasyarakat.jsx'
+import Register from './components/login/Register.jsx'
 import NotFoundPage from './components/Homepage/NotFound.jsx'
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/login-masyarakat',
     element: <LoginMasyarakat/>
+  },
+  {
+    path: '/register',
+    element: <Register/>
   },
 ]);
 

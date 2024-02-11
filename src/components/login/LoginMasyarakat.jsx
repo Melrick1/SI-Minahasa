@@ -1,4 +1,5 @@
 import usePasswordToggle from './FuncLogin';
+import {Link} from "react-router-dom"
 
 const LoginMasyarakat = () => {
     const { showPassword, handleTogglePassword } = usePasswordToggle();
@@ -26,8 +27,8 @@ const LoginMasyarakat = () => {
                     </div>
                     <a href="#">Forgot password?</a>
                     <div className="buttons-masyarakat">
-                        <button class="submit masyarakat">Sign in</button>
-                        <button className="register masyarakat">Register</button>
+                        <button className="submit masyarakat">Sign in</button>
+                        <Link to="/register" className="register masyarakat">Register</Link>
                     </div>
                 </form>
             </div>
