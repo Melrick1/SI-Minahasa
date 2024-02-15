@@ -1,6 +1,7 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from 'react';
-import {auth} from "../../Firebase.js"
+import {useState} from 'react';
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import {collection, getDocs, query, where} from 'firebase/firestore';
+import {auth, db} from '../../Firebase.js';
 import usePasswordToggle from './FuncLogin';
 import './Login.css'
 
@@ -12,19 +13,33 @@ const LoginAdmin = () => {
     const [email, setEmail ]= useState('');
     const [password, setPassword] = useState('');
 
-    const signIn = (e) => {
-        e.preventDefault(); //stop page from reload on submit
+    const signIn = async (e) => {
+        e.preventDefault();
 
-        //copy from Firebase web
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            console.log(userCredential.user);
-        })
-        .catch((error) => {
-            console.log(error.code);
-            console.log(error.message);
-        });
+        try {
+            // Sign in with email and password
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+
+            // Check if the user has an accType
+            const q = query(collection(db, 'users'), where('uid', '==', userCredential.user.uid));
+            const querySnapshot = await getDocs(q);
+
+            if (querySnapshot.docs.length > 0) {
+                const userData = querySnapshot.docs[0].data();
+
+                if (userData.accType === 'Admin') {
+                    // Allow login for Admin
+                    console.log("Signed in successfully:", userCredential.user);
+                } else {
+                    // User is not allowed to log in
+                    console.log("User is not admin");
+                }
+            } else {
+                console.error("User data not found");
+            }
+        } catch (error) {
+            console.error("Error signing in:", error.message);
+        }
     }
 
     return(

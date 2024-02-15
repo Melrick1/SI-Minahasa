@@ -1,7 +1,8 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useState } from 'react';
-import {auth} from "../../Firebase.js"
-import {Link} from "react-router-dom"
+import {useState} from 'react';
+import {createUserWithEmailAndPassword} from 'firebase/auth';
+import {collection, addDoc} from 'firebase/firestore';
+import {auth, db} from '../../Firebase.js'
+import {Link} from 'react-router-dom'
 import usePasswordToggle from './FuncLogin';
 
 const Register = () => {
@@ -16,7 +17,11 @@ const Register = () => {
     const signUp = async (e) => {
         e.preventDefault(); //stop page from reload on submit
 
-        // Check if passwords match
+        // Check if invalid
+        if (fullName.trim() === ""){
+            console.log("Full Name is Required")
+            return;
+        }
         if (password1 !== password2) {
             console.log("Passwords do not match");
             return;
@@ -27,8 +32,10 @@ const Register = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password1);
 
             // Update user profile with full name
-            await updateProfile(userCredential.user, {
-                displayName: fullName
+            await addDoc(collection(db, 'users'), {
+                uid: userCredential.user.uid,
+                fullName: fullName,
+                accType: 'Masyarakat',
             });
 
             // Registered successfully
