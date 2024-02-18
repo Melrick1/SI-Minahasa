@@ -1,0 +1,26 @@
+.star-rating-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.star-rating-container p{
+    margin: 0.2rem 0.5rem 0rem 1rem;
+    text-align: center;
+    font-weight: bold;
+    text-align: left;
+}
+
+.star{
+    font-size: 20px;
+    text-shadow: 3px 3px 10px rgba(76, 76, 78, 0.8);
+}
+
+.selected {
+    cursor: pointer;
+    color: gold;
+}
+
+.unselected {
+    cursor: pointer;
+    color: rgb(99, 99, 99);
+}

@@ -3,7 +3,7 @@ import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {collection, addDoc} from 'firebase/firestore';
 import {auth, db} from '../../Firebase.js'
 import {Link} from 'react-router-dom'
-import usePasswordToggle from './FuncLogin';
+import usePasswordToggle from './ShowPassword.jsx';
 
 const Register = () => {
     const { showPassword1, showPassword2, handleTogglePassword1, handleTogglePassword2 } = usePasswordToggle();

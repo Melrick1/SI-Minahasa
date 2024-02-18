@@ -1,0 +1,54 @@
+.landing{
+    background-color: rgb(117, 166, 182);
+    color: black;
+}
+
+.landingContent{
+    margin-top: 3.5rem;
+}
+
+header{
+    top: 0;
+    position: absolute;
+    width: 100vw;
+    height: 3rem;
+    background-color: rgb(28, 68, 143);
+    border-bottom: 3px solid rgb(20, 48, 102);
+}
+
+h3{
+    margin-top: 0.6rem;
+    color: rgba(255, 255, 255, 0.89)
+}
+
+.line{
+    height: 0.5rem;
+    background-color: rgb(20, 48, 102);
+}
+
+.questionDisplay{
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center; 
+    width: 85vw;
+}
+
+.questionDisplay .questionCard{
+    min-width: 85vw;
+    background-color: #c9c9c9;
+    border: 2px solid rgb(77, 77, 77);
+    border-radius: 10px;
+}
+
+.questionCard h4{
+    text-align: left;
+    margin: 1rem;
+}
+
+.comment-section{
+    width: 82vw;
+    height: 5rem;
+}

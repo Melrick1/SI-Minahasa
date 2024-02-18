@@ -1,45 +1,24 @@
 import {useState} from 'react';
-import {signInWithEmailAndPassword} from 'firebase/auth';
-import {collection, getDocs, query, where} from 'firebase/firestore';
-import {auth, db} from '../../Firebase.js';
-import usePasswordToggle from './FuncLogin';
-import './Login.css'
+import {useNavigate} from 'react-router-dom';
+import { AuthAdmin } from './AuthFunction.jsx';
+import usePasswordToggle from './ShowPassword.jsx';
+import './Signin.css'
 
 const LoginAdmin = () => {
+    //React Router Navigation
+    const navigate = useNavigate();
+
     //Show password
     const { showPassword1, handleTogglePassword1 } = usePasswordToggle();
 
     //Firebase Auth
-    const [email, setEmail ]= useState('');
+    const [email, setEmail ] = useState('');
     const [password, setPassword] = useState('');
+    const [kantor, setKantor] = useState('Masyarakat Airmadidi Bawah');
 
-    const signIn = async (e) => {
-        e.preventDefault();
-
-        try {
-            // Sign in with email and password
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-
-            // Check if the user has an accType
-            const q = query(collection(db, 'users'), where('uid', '==', userCredential.user.uid));
-            const querySnapshot = await getDocs(q);
-
-            if (querySnapshot.docs.length > 0) {
-                const userData = querySnapshot.docs[0].data();
-
-                if (userData.accType === 'Admin') {
-                    // Allow login for Admin
-                    console.log("Signed in successfully:", userCredential.user);
-                } else {
-                    // User is not allowed to log in
-                    console.log("User is not admin");
-                }
-            } else {
-                console.error("User data not found");
-            }
-        } catch (error) {
-            console.error("Error signing in:", error.message);
-        }
+    const handleSignIn = async (e) => {
+        e.preventDefault(); //prevent page reload on form submit
+        AuthAdmin(email, password, kantor, navigate);
     }
 
     return(
@@ -47,16 +26,17 @@ const LoginAdmin = () => {
             <div className="login-container admin">
                 <h1>Sign in <br/>Admin</h1>
 
-                {/* Combobox input */}
-                <div className="form-content">
-                    <select className='inputbox combo' id="kantor">
-                        <option value="Admin Airmadidi Bawah">Kantor Kelurahan Airmadidi Bawah </option>
-                        <option value="Admin Watutumou Dua">Kantor Hukum Tua Desa Watutumou Dua</option>
-                    </select>
-                </div>
-
-                <form onSubmit={signIn}>
+                <form onSubmit={handleSignIn}>
+                    {/* Combobox input */}
                     <label>Pilih kantor admin anda :</label>
+                    <div className="form-content">
+                        <select className='inputbox combo'
+                        value={kantor}
+                        onChange={(e) => setKantor(e.target.value)}>
+                            <option value="Admin Airmadidi Bawah">Kantor Kelurahan Airmadidi Bawah </option>
+                            <option value="Admin Watutumou Dua">Kantor Hukum Tua Desa Watutumou Dua</option>
+                        </select>
+                    </div>
 
                     {/* Email input */}
                     <div className="form-content">

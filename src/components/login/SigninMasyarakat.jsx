@@ -1,65 +1,43 @@
 import {useState} from 'react';
-import {signInWithEmailAndPassword} from 'firebase/auth';
-import {collection, getDocs, query, where} from 'firebase/firestore';
-import {auth, db} from '../../Firebase.js';
-import usePasswordToggle from './FuncLogin';
 import {Link} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
+import { AuthMasyarakat } from './AuthFunction.jsx';
+import usePasswordToggle from './ShowPassword.jsx';
 
 const LoginMasyarakat = () => {
+    //React Router Navigation
+    const navigate = useNavigate();
+
     //Show password
     const { showPassword1, handleTogglePassword1 } = usePasswordToggle();
 
     //Firebase Auth
-    const [email, setEmail ]= useState('');
+    const [email, setEmail ] = useState('');
     const [password, setPassword] = useState('');
+    const [kantor, setKantor] = useState('Masyarakat Airmadidi Bawah');
 
-    const signIn = async (e) => {
-        e.preventDefault();
-
-        try {
-            // Sign in with email and password
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-
-            // Query Firestore
-            const q = query(collection(db, 'users'), where('uid', '==', userCredential.user.uid));
-            const querySnapshot = await getDocs(q);
-
-            if (querySnapshot.docs.length > 0) {
-                const userData = querySnapshot.docs[0].data();
-
-                if (userData.accType === 'Masyarakat') {
-                    // Allow login for Masyarakate
-                    console.log("Signed in successfully:", userCredential.user);
-                } else {
-                    // User is not allowed to log in
-                    console.log("User is not Masyarakat");
-                }
-            } 
-            else {
-                console.error("User not found");
-            }
-        } 
-        catch (error) {
-            console.error("Error signing in:", error.message);
-        }
+    const handleSignIn = async (e) => {
+        e.preventDefault(); //prevent page reload on form submit
+        AuthMasyarakat(email, password, kantor, navigate);
     }
-
 
     return(
         <section className="hero">
             <div className="login-container masyarakat">
                 <h1>Sign in<br/>Masyarakat</h1>
+
+                <form onSubmit={handleSignIn}>
                     <label>Pilih wilayah anda :</label>
+                    {/* Combobox input */}
+                    <div className="form-content">
+                        <select className='inputbox combo'
+                        value={kantor}
+                        onChange={(e) => setKantor(e.target.value)}>
+                            <option value="Masyarakat Airmadidi Bawah">Masyarakat Kelurahan Airmadidi Bawah</option>
+                            <option value="Masyarakat Watutumou Dua">Masyarakat Desa Watutumou Dua</option>
+                        </select>
+                    </div>
 
-                {/* Combobox input */}
-                <div className="form-content">
-                    <select className='inputbox combo' id="masyarakat">
-                        <option value="Masyarakat Airmadidi Bawah">Masyarakat Kelurahan Airmadidi Bawah</option>
-                        <option value="Masyarakat Watutumou Dua">Masyarakat Desa Watutumou Dua</option>
-                    </select>
-                </div>
-
-                <form onSubmit={signIn}>
                     {/* Email input */}
                     <div className="form-content">
                         <input 
