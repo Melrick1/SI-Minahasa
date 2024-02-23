@@ -1,9 +1,7 @@
 import {useState} from 'react';
-import {createUserWithEmailAndPassword} from 'firebase/auth';
-import {collection, addDoc} from 'firebase/firestore';
-import {auth, db} from '../../Firebase.js'
 import {Link} from 'react-router-dom'
-import usePasswordToggle from './ShowPassword.jsx';
+import { SignUp } from './SignInFunctions/AuthFunction.jsx';
+import usePasswordToggle from './SignInFunctions/ShowPassword.jsx';
 
 const Register = () => {
     const { showPassword1, showPassword2, handleTogglePassword1, handleTogglePassword2 } = usePasswordToggle();
@@ -13,44 +11,31 @@ const Register = () => {
     const [email, setEmail ]= useState('');
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState(''); //Re-enter password
+    const [errorMessage, setErrorMessage] = useState('')
 
-    const signUp = async (e) => {
+    const SignUpHandler = async (e) => {
         e.preventDefault(); //stop page from reload on submit
 
         // Check if invalid
         if (fullName.trim() === ""){
-            console.log("Full Name is Required")
+            setErrorMessage("Nama Lengkap diperlukan")
             return;
         }
         if (password1 !== password2) {
-            console.log("Passwords do not match");
+            setErrorMessage("Password tidak sama");
             return;
         }
 
-        try {
-            // Create user with email and password
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password1);
-
-            // Update user profile with full name
-            await addDoc(collection(db, 'users'), {
-                uid: userCredential.user.uid,
-                fullName: fullName,
-                accType: 'Masyarakat',
-            });
-
-            // Registered successfully
-            console.log(userCredential.user);
-        } catch (error) {
-            console.error(error.code);
-            console.error(error.message);
-        }
+        SignUp(fullName, email, password1, setErrorMessage);
     }
 
     return(
         <section className='hero'>
             <div className="login-container">
                 <h1>Register</h1>
-                <form onSubmit={signUp}>
+
+                <p className={errorMessage == "Sign Up Berhasil" ? "success auth-message" : "error auth-message"}>&nbsp;{errorMessage}</p>
+                <form onSubmit={SignUpHandler}>
                     <label>Masukkan data anda :</label>
 
                     {/* Name input */}

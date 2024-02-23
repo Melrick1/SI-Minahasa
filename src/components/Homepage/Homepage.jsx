@@ -19,7 +19,7 @@ const Homepage = () => {
         };
     }, []);
 
-    const getAdjustedWidth = () => {
+    const GetAdjustedWidth = () => {
         if (screenWidth >= 540) {
             return 250; // Width for larger screens
         } else if (screenWidth <= 540) {
@@ -31,13 +31,13 @@ const Homepage = () => {
         <section className="home-hero hero">
             <div className='homecard'>
                 <div>
-                    <img src="/LogoMinahasaUtara.png" width={getAdjustedWidth()} alt="Logo"></img>
+                    <img src="/LogoMinahasaUtara.png" width={GetAdjustedWidth()} alt="Logo"></img>
                 </div>
                 <div>
                     <h2>Sistem Informasi Kepuasan Layanan Pemerintah <br/>di Minahasa Utara</h2>
                     <div className='homecard-buttons'>
-                        <Link to="/login-admin" className='homecard-link'>Login Admin</Link>
-                        <Link to="/login-masyarakat" className='homecard-link'>Login Masyarakat</Link>
+                        <Link to="/login-admin" className='homecard-link'>Sign-In Admin</Link>
+                        <Link to="/login-masyarakat" className='homecard-link'>Sign-In Masyarakat</Link>
                     </div>
                 </div>
             </div>

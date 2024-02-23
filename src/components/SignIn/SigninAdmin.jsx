@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { AuthAdmin } from './AuthFunction.jsx';
-import usePasswordToggle from './ShowPassword.jsx';
+import { AuthAdmin } from './SignInFunctions/AuthFunction.jsx';
+import usePasswordToggle from './SignInFunctions/ShowPassword.jsx';
 import './Signin.css'
 
 const LoginAdmin = () => {
@@ -11,14 +11,14 @@ const LoginAdmin = () => {
     //Show password
     const { showPassword1, handleTogglePassword1 } = usePasswordToggle();
 
-    //Firebase Auth
     const [email, setEmail ] = useState('');
     const [password, setPassword] = useState('');
-    const [kantor, setKantor] = useState('Masyarakat Airmadidi Bawah');
+    const [kantor, setKantor] = useState('Admin Airmadidi Bawah');
+    const [errorMessage, setErrorMessage] = useState('')
 
-    const handleSignIn = async (e) => {
+    const SignInHandler = async (e) => {
         e.preventDefault(); //prevent page reload on form submit
-        AuthAdmin(email, password, kantor, navigate);
+        AuthAdmin(email, password, kantor, navigate, setErrorMessage);
     }
 
     return(
@@ -26,7 +26,8 @@ const LoginAdmin = () => {
             <div className="login-container admin">
                 <h1>Sign in <br/>Admin</h1>
 
-                <form onSubmit={handleSignIn}>
+                <p className='error auth-message'>&nbsp;{errorMessage}</p>
+                <form onSubmit={SignInHandler}>
                     {/* Combobox input */}
                     <label>Pilih kantor admin anda :</label>
                     <div className="form-content">

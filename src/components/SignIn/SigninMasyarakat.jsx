@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom'
 import {useNavigate} from 'react-router-dom';
-import { AuthMasyarakat } from './AuthFunction.jsx';
-import usePasswordToggle from './ShowPassword.jsx';
+import { AuthMasyarakat } from './SignInFunctions/AuthFunction.jsx';
+import usePasswordToggle from './SignInFunctions/ShowPassword.jsx';
 
 const LoginMasyarakat = () => {
     //React Router Navigation
@@ -11,14 +11,14 @@ const LoginMasyarakat = () => {
     //Show password
     const { showPassword1, handleTogglePassword1 } = usePasswordToggle();
 
-    //Firebase Auth
     const [email, setEmail ] = useState('');
     const [password, setPassword] = useState('');
     const [kantor, setKantor] = useState('Masyarakat Airmadidi Bawah');
+    const [errorMessage, setErrorMessage] = useState('')
 
-    const handleSignIn = async (e) => {
+    const SignInHandler = async (e) => {
         e.preventDefault(); //prevent page reload on form submit
-        AuthMasyarakat(email, password, kantor, navigate);
+        AuthMasyarakat(email, password, kantor, navigate, setErrorMessage);
     }
 
     return(
@@ -26,7 +26,8 @@ const LoginMasyarakat = () => {
             <div className="login-container masyarakat">
                 <h1>Sign in<br/>Masyarakat</h1>
 
-                <form onSubmit={handleSignIn}>
+                <p className='error auth-message'>&nbsp;{errorMessage}</p>
+                <form onSubmit={SignInHandler}>
                     <label>Pilih wilayah anda :</label>
                     {/* Combobox input */}
                     <div className="form-content">
@@ -66,7 +67,7 @@ const LoginMasyarakat = () => {
                     <a href="#">Forgot password?</a>
                     <div className="buttons-masyarakat">
                         <button type="submit" className="submit masyarakat">Sign in</button>
-                        <Link to="/register" className="register masyarakat">Register</Link>
+                        <Link to="/signup" className="register masyarakat">Register</Link>
                     </div>
                 </form>
             </div>

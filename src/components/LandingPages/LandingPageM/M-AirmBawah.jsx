@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import StarRating from './StarRating.jsx';
+import StarRating from '../PageFunctions/StarRating.jsx';
 import './LandingMasyarakat.css'
+import FetchDataComponent from '../PageFunctions/FetchData.jsx';
 
 const MasyarakatAirmBawah = () =>{
     const [rating, setRating] = useState(0);
+    const [Comment, setComment] = useState('');
+    const userData = FetchDataComponent();
 
     const handleRatingChange = (newRating) => {
         setRating(newRating);
     };
-
-    const [Comment, setComment] = useState('');
 
     // Event handler for input change
     const commentChange = (event) => {
@@ -23,7 +24,7 @@ const MasyarakatAirmBawah = () =>{
             </header>
             <div className='landingContent'>
                 <div className='line'></div>
-                <h2>Layanan pemerintah Airmadidi Bawah</h2>
+                <h2>Layanan pemerintah kelurahan Airmadidi Bawah</h2>
 
                 <div className="questionDisplay">
                     <div className="questionCard">

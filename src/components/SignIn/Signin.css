@@ -15,6 +15,20 @@
     text-align: center;
 }
 
+
+.login-container .auth-message{
+    margin: -1rem auto 0 auto;
+}
+
+.login-container .success{
+    color: green;
+}
+
+.login-container .error{
+    color: red;
+}
+
+
 .login-container label{
     font-size: 14px;
     text-align: left;

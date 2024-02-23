@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import StarRating from './StarRating.jsx';
+import StarRating from '../PageFunctions/StarRating.jsx';
 import './LandingMasyarakat.css'
+import FetchDataComponent from '../PageFunctions/FetchData.jsx';
 
 const MasyarakatWatutumouDua = () =>{
     const [rating, setRating] = useState(0);
+    const [Comment, setComment] = useState('');
+    const userData = FetchDataComponent();
 
     const handleRatingChange = (newRating) => {
         setRating(newRating);
     };
-
-    const [Comment, setComment] = useState('');
 
     // Event handler for input change
     const commentChange = (event) => {

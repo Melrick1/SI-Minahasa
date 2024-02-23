@@ -4,14 +4,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import './index.css'
 import App from './App.jsx'
-import LoginAdmin from './components/login/SigninAdmin.jsx'
-import LoginMasyarakat from './components/login/SigninMasyarakat.jsx'
-import Register from './components/login/Register.jsx'
+import LoginAdmin from './components/SignIn/SigninAdmin.jsx'
+import LoginMasyarakat from './components/SignIn/SigninMasyarakat.jsx'
+import SignUp from './components/SignIn/SignUp.jsx'
 import NotFoundPage from './components/Homepage/NotFound.jsx'
-import MasyarakatAirmBawah from './components/LandingPageM/M-AirmBawah.jsx'
-import MasyarakatWatutumouDua from './components/LandingPageM/M-WatutumouDua.jsx'
-import AdminAirmBawah from './components/LandingPageA/A-AirmBawah.jsx'
-import AdminWatutumouDua from './components/LandingPageA/A-WatutumouDua.jsx'
+import MasyarakatAirmBawah from './components/LandingPages/LandingPageM/M-AirmBawah.jsx'
+import MasyarakatWatutumouDua from './components/LandingPages/LandingPageM/M-WatutumouDua.jsx'
+import AdminAirmBawah from './components/LandingPages/LandingPageA/A-AirmBawah.jsx'
+import AdminWatutumouDua from './components/LandingPages/LandingPageA/A-WatutumouDua.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
     element: <LoginMasyarakat/>
   },
   {
-    path: '/register',
-    element: <Register/>
+    path: '/signup',
+    element: <SignUp/>
   },
   {
     path: '/Masyarakat-AirmBawah',
