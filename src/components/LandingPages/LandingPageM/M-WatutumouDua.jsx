@@ -18,7 +18,7 @@ const MasyarakatWatutumouDua = () =>{
                 <div className="questionDisplay">
                     <Question/>
                     <Question/>
-                +</div>
+                </div>
             </div>
         </section>
     )
