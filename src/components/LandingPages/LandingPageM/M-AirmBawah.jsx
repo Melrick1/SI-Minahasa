@@ -2,20 +2,10 @@ import React, { useState } from 'react';
 import StarRating from '../PageFunctions/StarRating.jsx';
 import './LandingMasyarakat.css'
 import FetchDataComponent from '../PageFunctions/FetchData.jsx';
+import Question from '../PageFunctions/Questions.jsx';
 
 const MasyarakatAirmBawah = () =>{
-    const [rating, setRating] = useState(0);
-    const [Comment, setComment] = useState('');
     const userData = FetchDataComponent();
-
-    const handleRatingChange = (newRating) => {
-        setRating(newRating);
-    };
-
-    // Event handler for input change
-    const commentChange = (event) => {
-        setComment(event.target.value);
-    };
 
     return(
         <section className='landing'>
@@ -27,34 +17,8 @@ const MasyarakatAirmBawah = () =>{
                 <h2>Layanan pemerintah kelurahan Airmadidi Bawah</h2>
 
                 <div className="questionDisplay">
-                    <div className="questionCard">
-                        <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
-                        <StarRating initialRating={rating} onRatingChange={handleRatingChange} />
-                        <textarea
-                        className='comment-section'
-                        type="text"
-                        value={Comment}
-                        onChange={commentChange}
-                        placeholder="Type something..."
-                        />
-
-                        {/* Displaying the user input */}
-                        <p>User Input: {Comment}</p>
-                    </div>
-                    <div className="questionCard">
-                        <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
-                        <StarRating initialRating={rating} onRatingChange={handleRatingChange} />
-                        <textarea
-                        className='comment-section'
-                        type="text"
-                        value={Comment}
-                        onChange={commentChange}
-                        placeholder="Type something..."
-                        />
-
-                        {/* Displaying the user input */}
-                        <p>User Input: {Comment}</p>
-                    </div>
+                    <Question/>
+                    <Question/>
                 </div>
             </div>
         </section>
