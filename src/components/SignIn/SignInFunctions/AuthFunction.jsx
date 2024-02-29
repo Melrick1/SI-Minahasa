@@ -5,6 +5,9 @@ import { Auth, DB } from '../../../Firebase.js';
 {/* Masyarakat Authentication */}
 const AuthMasyarakat = async (email, password, kantor, navigate, setErrorMessage) => {
   try {
+    // Sign in with email and password
+    const userCredential = await signInWithEmailAndPassword(Auth, email, password);
+
     // Query Firestore
     const userQuery = query(collection(DB, 'users'), where('uid', '==', userCredential.user.uid));
     const querySnapshot = await getDocs(userQuery);
@@ -21,9 +24,6 @@ const AuthMasyarakat = async (email, password, kantor, navigate, setErrorMessage
       setErrorMessage("User tidak ditemukan")
       return;
     }
-
-    // Sign in with email and password
-    const userCredential = await signInWithEmailAndPassword(Auth, email, password);
 
     //Validate Kantor
     if (kantor === "Masyarakat Airmadidi Bawah") {
@@ -43,6 +43,9 @@ const AuthMasyarakat = async (email, password, kantor, navigate, setErrorMessage
 {/* Admin Authentication */}
 const AuthAdmin = async (email, password, kantor, navigate, setErrorMessage) => {
     try {
+        // Sign in with email and password
+        const userCredential = await signInWithEmailAndPassword(Auth, email, password);
+
         // Check if the user has an accType
         const userQuery = query(collection(DB, 'users'), where('uid', '==', userCredential.user.uid));
         const querySnapshot = await getDocs(userQuery);
@@ -60,9 +63,6 @@ const AuthAdmin = async (email, password, kantor, navigate, setErrorMessage) => 
           setErrorMessage("User tidak ditemukan")
           return;
         }
-
-        // Sign in with email and password
-        const userCredential = await signInWithEmailAndPassword(Auth, email, password);
 
         //Validate Kantor
         if (kantor === "Admin Airmadidi Bawah") {
