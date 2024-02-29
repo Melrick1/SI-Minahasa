@@ -1,8 +1,24 @@
-# React + Vite
+# Sistem Informasi Minahasa
+A Site for Civillians of Minahasa to give feedback to the government system.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To view the demo : [Click here](https://si-minahasautara.netlify.app)
 
-Currently, two official plugins are available:
+# How to get started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Install dependencies
+```
+npm install
+```
+- Update/fix dependencies
+```
+npm audit fix
+```
+- Run
+```
+npm run dev 
+```
+
+# Tools
+- Build Framework : Vite
+- Library : React
+- Icons : Bootstrap icons
