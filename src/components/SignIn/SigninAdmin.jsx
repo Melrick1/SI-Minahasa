@@ -64,7 +64,7 @@ const LoginAdmin = () => {
                         </span>
                     </div>
 
-                    <a href="#">Forgot password?</a>
+                    <a className='normal-link' href="#">Forgot password?</a>
                     <button type="submit" className="submit admin">Sign in</button>
                 </form>
             </div>

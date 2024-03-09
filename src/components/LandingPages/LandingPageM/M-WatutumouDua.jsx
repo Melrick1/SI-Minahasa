@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
-import StarRating from '../PageFunctions/StarRating.jsx';
-import './LandingMasyarakat.css'
-import FetchDataComponent from '../PageFunctions/FetchData.jsx';
+import {Link} from 'react-router-dom'
+import FetchDataComponent from './FetchData.jsx';
 
 const MasyarakatWatutumouDua = () =>{
     const userData = FetchDataComponent();
-
+    
     return(
         <section className='landing'>
-            <header>
-                <h3>Selamat datang</h3>
-            </header>
-            <div className='landingContent'>
-                <div className='line'></div>
-                <h2>Layanan pemerintah Desa Watutumou Dua</h2>
+            <div className='landing-container'>
+                <h2>Selamat datang di sistem pertanyaan Watutumou Dua</h2>
 
-                <div className="questionDisplay">
-                    <Question/>
-                    <Question/>
+                <div className='homecard-buttons'>
+                    <Link to="/SKCK-WatutumouDua" className='homecard-link'>Layanan SKCK</Link>
+                    <Link to="/SKKK-WatutumouDua" className='homecard-link'>Layanan SKKK</Link>
+                    <Link to="/SKP-WatutumouDua" className='homecard-link'>Layanan SKP</Link>
                 </div>
             </div>
         </section>

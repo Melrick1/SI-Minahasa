@@ -13,7 +13,7 @@ const StarRating = ({ initialRating, onRatingChange }) => {
 
     return (
         <div className='star-rating-container'>
-            <p>rating :</p>
+            <p>Berikan Rating :</p>
             {[1, 2, 3, 4, 5].map((star) => (
                 <span
                 key={star}

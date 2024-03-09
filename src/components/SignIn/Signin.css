@@ -1,4 +1,5 @@
 .login-container{
+    position: relative;
     background-color: rgba(36, 36, 36, 0.8) ;
     margin-top: 2rem;
     margin-left: auto;
@@ -8,13 +9,13 @@
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 3px 5px 10px 3px lightgray;
+    z-index: 1;
 }
 
 .login-container h1{
     font-size: 36px;
     text-align: center;
 }
-
 
 .login-container .auth-message{
     margin: -1rem auto 0 auto;
@@ -95,14 +96,14 @@
 }
 
 /* register button <a> */
-.login-container .register{
+.register{
+    display: block;
     margin-top: 1rem;
     padding: 10px;
     width: 105px;
     color: white;
     font-weight: bold;
     font-size: 100%;
-    background-color: #0096C7;
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -111,40 +112,26 @@
     outline: none;
 }
 
-/* admin sing-in button*/
-button.submit.admin{
+.register:hover{
+    background-color: rgb(122, 122, 122);
+    box-shadow: 1px 1px 2px 1px lightgray;
+}
+
+.register:active{
+    background-color: rgb(80, 80, 80);
+}
+
+/*admin sing-in button*/
+.login-container .submit.admin{
     width: 250px;
 }
 
-button.submit:hover{
+.login-container .submit:hover{
     background-color: #00B4D8;
     box-shadow: 1px 1px 2px 1px rgb(206, 206, 206);
 }
 
-button.register:hover{
-    background-color: gray;
-    box-shadow: 1px 1px 2px 1px lightgray;
-}
-
-button.submit:active{
+.login-container .submit:active{
     background-color: #0077B6;
 }
-button.register:active{
-    background-color: rgb(100, 100, 100);
-}
 
-/* link */
-.login-container a{
-    font-size: 90%;
-    color: #0083ca;
-    text-decoration: none;
-}
-
-.login-container a:hover{
-    text-decoration: underline ;
-}
-
-.login-container a:focus{
-    color: #99bdec;
-    text-decoration: underline 
-}

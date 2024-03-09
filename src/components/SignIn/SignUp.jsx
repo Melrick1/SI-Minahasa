@@ -88,7 +88,7 @@ const Register = () => {
                         </span>
                     </div>
 
-                    <Link to="/login-masyarakat">Back to login</Link>
+                    <Link className='normal-link' to="/login-masyarakat">Back to login</Link>
                     <button type="submit" className="submit admin">Register</button>
                 </form>
             </div>

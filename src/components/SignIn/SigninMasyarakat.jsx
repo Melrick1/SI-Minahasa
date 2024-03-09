@@ -64,7 +64,7 @@ const LoginMasyarakat = () => {
                         </span>
                     </div>
 
-                    <a href="#">Forgot password?</a>
+                    <a className='normal-link' href="#">Forgot password?</a>
                     <div className="buttons-masyarakat">
                         <button type="submit" className="submit masyarakat">Sign in</button>
                         <Link to="/signup" className="register masyarakat">Register</Link>
