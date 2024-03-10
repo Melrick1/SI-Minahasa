@@ -36,8 +36,8 @@ const Homepage = () => {
                 <div>
                     <h2>Sistem Informasi Kepuasan Layanan Pemerintah <br/>di Minahasa Utara</h2>
                     <div className='homecard-buttons'>
-                        <Link to="/login-admin" className='homecard-link'>Sign-In Admin</Link>
-                        <Link to="/login-masyarakat" className='homecard-link'>Sign-In Masyarakat</Link>
+                        <Link to="/login-admin" className='button homecard-link'>Sign-In Admin</Link>
+                        <Link to="/login-masyarakat" className='button homecard-link'>Sign-In Masyarakat</Link>
                     </div>
                 </div>
             </div>

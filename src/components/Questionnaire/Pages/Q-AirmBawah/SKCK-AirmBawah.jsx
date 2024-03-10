@@ -88,7 +88,7 @@ const SKCKAirmBawah = () =>{
                     />
                     <StarRating initialRating={rating} onRatingChange={handleRatingChange} />
                 </div>
-                <button className='submit-response'>Submit</button>
+                <button className='submit-response button'>Submit</button>
             </div>
         </section>
     )

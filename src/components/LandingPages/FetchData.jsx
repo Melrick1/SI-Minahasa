@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { DB } from '../../../Firebase.js';
+import { DB } from '../../Firebase.js';
 
 const FetchDataComponent = () => {
   const [userData, setUserData] = useState(null);

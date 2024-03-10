@@ -12,9 +12,9 @@ const MasyarakatAirmBawah = () =>{
                 <h2>Selamat datang di sistem pertanyaan Airmadidi Bawah</h2>
 
                 <div className='landing-buttons'>
-                    <Link to="/SKCK-AirmBawah" className='landing-link'>Layanan SKCK</Link>
-                    <Link to="/SKKK-AirmBawah" className='landing-link'>Layanan SKKK</Link>
-                    <Link to="/SKP-AirmBawah" className='landing-link'>Layanan SKP</Link>
+                    <Link to="/SKCK-AirmBawah" className='button landing-link'>Layanan SKCK</Link>
+                    <Link to="/SKKK-AirmBawah" className='button landing-link'>Layanan SKKK</Link>
+                    <Link to="/SKP-AirmBawah" className='button landing-link'>Layanan SKP</Link>
                 </div>
             </div>
         </section>

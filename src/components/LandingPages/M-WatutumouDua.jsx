@@ -11,9 +11,9 @@ const MasyarakatWatutumouDua = () =>{
                 <h2>Selamat datang di sistem pertanyaan Watutumou Dua</h2>
 
                 <div className='homecard-buttons'>
-                    <Link to="/SKCK-WatutumouDua" className='homecard-link'>Layanan SKCK</Link>
-                    <Link to="/SKKK-WatutumouDua" className='homecard-link'>Layanan SKKK</Link>
-                    <Link to="/SKP-WatutumouDua" className='homecard-link'>Layanan SKP</Link>
+                    <Link to="/SKCK-WatutumouDua" className='button homecard-link'>Layanan SKCK</Link>
+                    <Link to="/SKKK-WatutumouDua" className='button homecard-link'>Layanan SKKK</Link>
+                    <Link to="/SKP-WatutumouDua" className='button homecard-link'>Layanan SKP</Link>
                 </div>
             </div>
         </section>

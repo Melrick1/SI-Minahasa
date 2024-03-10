@@ -26,7 +26,7 @@ const SKKKAirmBawah = () =>{
                 <div className="questionDisplay">
                     <Question
                     n={1}
-                    question="Sejauh mana Anda puas dengan kondisi fisik kantor kelurahan Airmadidi Bawah yang digunakan untuk pembuatan SKP?"
+                    question="Sejauh mana Anda puas dengan kondisi fisik kantor kelurahan Airmadidi Bawah yang digunakan untuk pembuatan SKKK?"
                     input1="Sangat Puas"
                     input2="Cukup Puas"
                     input3="Netral"
@@ -36,7 +36,7 @@ const SKKKAirmBawah = () =>{
                     />
                     <Question
                     n={2}
-                    question="Seberapa sering Anda mengalami kelambatan atau ketepatan waktu dalam pengurusan SKP di kantor kelurahan Airmadidi Bawah?"
+                    question="Seberapa sering Anda mengalami kelambatan atau ketepatan waktu dalam pengurusan SKKK di kantor kelurahan Airmadidi Bawah?"
                     input1="Sangat sering"
                     input2="Cukup sering"
                     input3="Netral"
@@ -46,7 +46,7 @@ const SKKKAirmBawah = () =>{
                     />
                     <Question
                     n={3}
-                    question="Seberapa cepat Anda mendapatkan tanggapan atau pelayanan saat mengajukan permohonan pembuatan SKP di kantor kelurahan Airmadidi Bawah?"
+                    question="Seberapa cepat Anda mendapatkan tanggapan atau pelayanan saat mengajukan permohonan pembuatan SKKK di kantor kelurahan Airmadidi Bawah?"
                     input1="Sangat cepat"
                     input2="Cukup cepat"
                     input3="Netral"
@@ -56,7 +56,7 @@ const SKKKAirmBawah = () =>{
                     />
                     <Question
                     n={4}
-                    question="Seberapa yakin Anda dengan keamanan dan keakuratan data yang terdapat dalam SKP yang Anda terima dari kantor kelurahan Airmadidi Bawah?"
+                    question="Seberapa yakin Anda dengan keamanan dan keakuratan data yang terdapat dalam SKKK yang Anda terima dari kantor kelurahan Airmadidi Bawah?"
                     input1="Sangat yakin"
                     input2="Cukup yakin"
                     input3="Netral"
@@ -66,7 +66,7 @@ const SKKKAirmBawah = () =>{
                     />
                     <Question
                     n={5}
-                    question="Seberapa baik staff kantor kelurahan Airmadidi Bawah memahami kebutuhan dan keluhan Anda selama proses pembuatan SKP?"
+                    question="Seberapa baik staff kantor kelurahan Airmadidi Bawah memahami kebutuhan dan keluhan Anda selama proses pembuatan SKKK?"
                     input1="Sangat baik"
                     input2="Cukup baik"
                     input3="Netral"
