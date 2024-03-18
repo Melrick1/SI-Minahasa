@@ -1,0 +1,68 @@
+.hero{
+    background: url(/src/assets/Background-MU.jpeg) top center;
+    background-size:cover;
+}
+
+.homecard{
+    z-index: 1;
+    position: relative;
+    justify-content: center;
+    min-height: 250px;
+    text-align: left;
+    gap: 5rem;
+}
+
+.homecard h2{
+    padding: 1rem;
+}
+
+.homecard-buttons{
+    margin-top: 3rem;
+    display: inline-block;
+    text-decoration: none;    
+}
+
+/* Large screen */
+@media only screen and (min-width: 961px){
+    .homecard{
+        padding-top: 10rem;
+        display: flex;
+    }
+
+    .homecard-link{
+        margin: 1.5rem;
+    }
+}
+
+/* medium screen */
+@media only screen and (max-width: 960px){
+    .homecard{
+        padding-top: 5rem;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .homecard-link{
+        margin: 0 1rem;
+    }
+
+    .homecard-buttons{
+        margin-top: 2rem;
+    }
+}
+
+/* small screen */
+@media only screen and (max-width: 540px){
+    .homecard{
+        padding-top: 3rem;
+    }
+
+    .homecard-link{
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .homecard-buttons{
+        margin-top: 1rem;
+    }
+}

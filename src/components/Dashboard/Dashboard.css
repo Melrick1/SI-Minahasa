@@ -1,0 +1,57 @@
+.add-question{
+    font-size: 5rem;
+    color: gray;
+    padding: 1rem;
+    width: 100%;
+}
+
+.add-question:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.chart-container{
+    width: 80%;
+    margin: 0 auto 1rem auto;
+}
+
+.question-input h3{
+    margin-top: 0;
+    text-align: center;
+}
+
+.question-input .close{
+    margin: 1rem 0 0 1rem;
+    padding: 0;
+    text-align: center;
+    font-size: 20px;
+    background-color: darkgray;
+    color: black;
+    width: 28px;
+    height: 28px;
+    border: black solid 1px;
+    border-radius: 10px;
+}
+
+.close:hover{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.question-input .form-content-question{
+    padding: 0;
+    margin: 1rem auto;
+    max-width: 90%;
+    min-width: 90%;
+    border: 2px solid #d6d6d6;
+    border-radius: 5px;
+    background-color: rgb(56, 56, 56);
+}
+
+.question-input .typed{
+    border: none;
+    padding: 10px;
+    outline: none;
+    width: 95%;
+}

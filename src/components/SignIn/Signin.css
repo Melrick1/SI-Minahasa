@@ -1,0 +1,137 @@
+.login-container{
+    position: relative;
+    background-color: rgba(36, 36, 36, 0.8) ;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 275px;
+    height: 450px;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 3px 5px 10px 3px lightgray;
+    z-index: 1;
+}
+
+.login-container h1{
+    font-size: 36px;
+    text-align: center;
+}
+
+.login-container .auth-message{
+    margin: -1rem auto 0 auto;
+}
+
+.login-container .success{
+    color: lime;
+}
+
+.login-container .error{
+    color: red;
+}
+
+
+.login-container label{
+    font-size: 14px;
+    text-align: left;
+    color: #d6d6d6bd;
+}
+
+/* Input */
+.form-content{
+    padding: 0;
+    margin: 0.2rem auto 1rem auto;
+    max-width: 250px;
+    min-width: 250px;
+    border: 2px solid #d6d6d6;
+    border-radius: 5px;
+    background-color: rgb(56, 56, 56);
+
+}
+
+.login-container .inputbox{
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+
+.login-container select{
+    width: 250px;  
+}
+
+.login-container .typed{
+    width: 230px;
+}
+
+.login-container .pass{
+    width: 203px;
+    border-right: 1px solid white;
+}
+
+/* Password toggle */
+.form-content i{
+    margin: 0.25rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* Button */
+.buttons-masyarakat{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* all buttons <button> */
+.login-container .submit{
+    margin-top: 1rem;
+    padding: 10px;
+    width: 125px;
+    color: white;
+    font-weight: bold;
+    font-size: 100%;
+    background-color: #0096C7;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* register button <a> */
+.register{
+    display: block;
+    margin-top: 1rem;
+    padding: 10px;
+    width: 105px;
+    color: white;
+    font-weight: bold;
+    font-size: 100%;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: rgb(100, 100, 100);
+    text-decoration: none;
+    outline: none;
+}
+
+.register:hover{
+    background-color: rgb(122, 122, 122);
+    box-shadow: 1px 1px 2px 1px lightgray;
+}
+
+.register:active{
+    background-color: rgb(80, 80, 80);
+}
+
+/*admin sing-in button*/
+.login-container .submit.admin{
+    width: 250px;
+}
+
+.login-container .submit:hover{
+    background-color: #00B4D8;
+    box-shadow: 1px 1px 2px 1px rgb(206, 206, 206);
+}
+
+.login-container .submit:active{
+    background-color: #0077B6;
+}
+
