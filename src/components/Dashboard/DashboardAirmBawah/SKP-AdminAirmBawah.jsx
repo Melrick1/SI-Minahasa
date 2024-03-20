@@ -1,21 +1,25 @@
 import { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom'
-import AdminQuestion from '../SubComponents/AdminQuestion';
+import { useMyContext } from '../../../MyContext';
 import QuestionInput from '../SubComponents/QuestionInput';
+import QuestionAdmin from '../SubComponents/QuestionAdmin';
 import FetchQuestions from '../SubComponents/FetchQuestions';
 
 const AdminSKPAirmBawah = () =>{
     const chartdata = [1,2,4,2]
-    const [fetchedQuestions, setFetchedQuestions] = useState([])
+    const { boolRefresh } = useMyContext();
+    const [numbersArray, setNumbersArray] = useState([]);
+    const [valuesArray, setValuesArray] = useState([]);
+    const DBdoc = 'Questions SKP AirmBawah';
 
     useEffect(() => {
         const fetchFormattedData = async () => {
-            const docName = 'Questions SKCK AirmBawah';
-            const formattedData = await FetchQuestions(docName);
-            setFetchedQuestions(formattedData);
+            const { numbers, values } = await FetchQuestions(DBdoc);
+            setNumbersArray(numbers);
+            setValuesArray(values);
         }
         fetchFormattedData();
-    },[])
+    },[boolRefresh])
 
     return(
         <section className='questionnaire'>
@@ -33,12 +37,17 @@ const AdminSKPAirmBawah = () =>{
             <div className='landingContent'>
                 <div className='line'></div>
                 <h2>Layanan Pembentukan Surat Keterangan Penduduk</h2>
-
+                <QuestionInput docName={DBdoc}/>
+                
                 <div className="questionDisplay">
-                    <QuestionInput docName={'Questions SKP AirmBawah'}/>
-
-                    {fetchedQuestions.map((index) => (
-                        <AdminQuestion key={index} question={index} data={chartdata}/>
+                    {valuesArray.map((value, index) => (
+                        <QuestionAdmin 
+                        key={numbersArray[index]} 
+                        n={numbersArray[index]} 
+                        question={value} 
+                        data={chartdata}
+                        docName={DBdoc}
+                        />
                     ))}
                 </div>
 

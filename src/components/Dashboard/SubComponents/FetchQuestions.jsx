@@ -22,11 +22,14 @@ const FetchQuestions = async (docName) => {
             // Sort the array based on the numbers
             dataArray.sort((a, b) => a.number - b.number);
 
-            // Extract numbers and corresponding values as strings
-            const formattedData = dataArray.map(({ number, value }) => `${number}. ${value}`);
+            // Extract numbers and corresponding values into separate arrays
+            const numbersArray = dataArray.map(({ number }) => number);
+            const valuesArray = dataArray.map(({ value }) => value);
 
-            console.log(formattedData)
-            return formattedData;
+            console.log('Numbers:', numbersArray);
+            console.log('Values:', valuesArray);
+
+            return { numbers: numbersArray, values: valuesArray };
         } else {
             console.log('Document does not exist.');
             return [];

@@ -45,7 +45,7 @@ const BarChart = ({ questionNumber, answersLists }) => {
             label : 'answer',
             data: Object.values(optionCounts),
             backgroundColor: '#0096C7',
-            borderColor: '#5c365c',
+            borderColor: '#0F4D6E',
             borderWidth: 2,
         }],
     };

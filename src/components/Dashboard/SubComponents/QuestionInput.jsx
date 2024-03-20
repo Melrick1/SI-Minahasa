@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { DB } from '../../../Firebase.js';
-import { doc, collection, getDoc, updateDoc } from 'firebase/firestore';
+import { useMyContext } from '../../../MyContext.jsx';
 
 const QuestionInput = ({ docName }) => {
-    const [QuestionIn, setQuestion] = useState ('')
+    const [submittedQuestion, setQuestion] = useState ('')
+    const [loadingMessage, setMessage] = useState('')
     const [activateForm, SetActivateForm] = useState(false);
+    const { StoreQuestion } = useMyContext();
 
     const addQuestionHandler = () => {
         if (activateForm == false) {
@@ -14,37 +15,15 @@ const QuestionInput = ({ docName }) => {
         }
     }
 
-    const StoreQuestion = async (e) => {
+    const submitQuestionHandler = async (e) => {
         e.preventDefault();
-        const docRef = doc(collection(DB, 'questions'), docName);
-
-        try {
-            // Fetch document snapshot
-            const docSnapshot = await getDoc(docRef);
-
-            let n = 1; //default
-
-            if (docSnapshot.exists()) {
-                // If document exists, count number of fields
-                const data = docSnapshot.data();
-                n = Object.keys(data).length + 1;
-            }
-
-            // Update questions data
-            await updateDoc(docRef, {
-                [`pertanyaan${n}`]: QuestionIn
-            });
-
-            console.log(`Question ${n} stored successfully`);
-            SetActivateForm(false)
-
-        } catch (error) {
-            console.error('Error storing question data:', error);
-        }
+        setMessage('Loading...');
+        await StoreQuestion(docName, submittedQuestion);
+        SetActivateForm(false);
     }
     
     return(
-        <div className='Question-Input'>
+        <div className='inputCard'>
             {activateForm === false &&                    
                 <button className='add-question questionCard' onClick={addQuestionHandler}>
                     <i className="bi bi-plus-square"></i>
@@ -58,17 +37,19 @@ const QuestionInput = ({ docName }) => {
                     </button>
                     <h3>Tambahkan Pertanyaan</h3>
     
-                    <form onSubmit={StoreQuestion}>
+                    <form onSubmit={submitQuestionHandler}>
                         <div className="form-content-question">
                             <input 
                                 className='inputbox typed' 
                                 type="text" 
                                 placeholder="Input pertanyaan disini..."
-                                value={QuestionIn}
+                                value={submittedQuestion}
                                 onChange={(e) => setQuestion(e.target.value)}>
                             </input>
                         </div>
-                    <button type="submit" className="submit button">Submit</button>
+
+                        <p>{loadingMessage}</p>
+                        <button type="submit" className="submit button">Submit</button>
                     </form>
                     
                 </div>

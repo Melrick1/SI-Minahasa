@@ -1,12 +1,22 @@
-import { useState } from 'react';
-import {Link} from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
+import FetchQuestions from '../../../Dashboard/SubComponents/FetchQuestions.jsx';
 import StarRating from '../../PageFunctions/StarRating.jsx';
 import Question from '../../PageFunctions/Questions.jsx';
-import '../QuestionsMasyarakat.css'
 
 const SKPWatutumouDua = () =>{
     const [Comment, setComment] = useState('');
     const [rating, setRating] = useState(0);
+    const [fetchedQuestions, setFetchedQuestions] = useState([])
+    const DBdoc = 'Questions SKP WatutumouDua';
+
+    useEffect(() => {
+        const fetchFormattedData = async () => {
+            const formattedData = await FetchQuestions(DBdoc);
+            setFetchedQuestions(formattedData);
+        }
+        fetchFormattedData();
+    },[])
 
     const commentChange = (event) => {
         setComment(event.target.value);
@@ -33,57 +43,11 @@ const SKPWatutumouDua = () =>{
                 <h2>Layanan Pembentukan Surat Keterangan Penduduk</h2>
 
                 <div className="questionDisplay">
-                    <Question
-                    n={1}
-                    question="Sejauh mana Anda puas dengan kondisi fisik kantor Hukum Tua Desa Watutumou Dua yang digunakan untuk pembentukan Surat Kelahiran?"
-                    input1="Sangat Puas"
-                    input2="Cukup Puas"
-                    input3="Netral"
-                    input4="Kurang Puas"
-                    input5="Tidak Puas"
-                    onAnswerChange={(selectedAnswer) => UpdateList(1, selectedAnswer)}
-                    />
-                    <Question
-                    n={2}
-                    question="Seberapa sering Anda mengalami kelambatan atau ketepatan waktu dalam pengurusan Surat Kelahiran di kantor Hukum Tua Desa?"
-                    input1="Sangat sering"
-                    input2="Cukup sering"
-                    input3="Netral"
-                    input4="Tidak sering"
-                    input5="Tidak pernah"
-                    onAnswerChange={(selectedAnswer) => UpdateList(2, selectedAnswer)}
-                    />
-                    <Question
-                    n={3}
-                    question="Seberapa cepat Anda mendapatkan tanggapan atau pelayanan saat mengajukan permohonan pembentukan Surat Kelahiran di kantor Hukum Tua Desa?"
-                    input1="Sangat cepat"
-                    input2="Cukup cepat"
-                    input3="Netral"
-                    input4="Cukup lambat"
-                    input5="Sangat lambat"
-                    onAnswerChange={(selectedAnswer) => UpdateList(3, selectedAnswer)}
-                    />
-                    <Question
-                    n={4}
-                    question="Seberapa yakin Anda dengan keamanan dan keakuratan data yang terdapat dalam Surat Kelahiran yang Anda terima dari kantor Hukum Tua Desa?"
-                    input1="Sangat yakin"
-                    input2="Cukup yakin"
-                    input3="Netral"
-                    input4="Kurang yakin"
-                    input5="Tidak yakin"
-                    onAnswerChange={(selectedAnswer) => UpdateList(4, selectedAnswer)}
-                    />
-                    <Question
-                    n={5}
-                    question="Seberapa baik staff kantor Hukum Tua Desa Watutumou Dua memahami kebutuhan dan keluhan Anda selama proses pembentukan Surat Kelahiran?"
-                    input1="Sangat baik"
-                    input2="Cukup baik"
-                    input3="Netral"
-                    input4="Kurang baik"
-                    input5="Tidak baik"
-                    onAnswerChange={(selectedAnswer) => UpdateList(5, selectedAnswer)}
-                    />
+                    {fetchedQuestions.map((index) => (
+                        <Question key={index} question={index}/>
+                    ))}
                 </div>
+
                 <div className='comment-section questionCard'>
                     <h3>Apakah ada saran untuk pengembangan pelayanan SKCK Airmadidi Bawah?</h3>
                     <p>Berikan komentar anda :</p>
