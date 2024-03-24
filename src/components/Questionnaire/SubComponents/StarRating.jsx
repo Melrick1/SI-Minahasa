@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './StarRating.css'
 
 const StarRating = ({ initialRating, onRatingChange }) => {
     const [rating, setRating] = useState(initialRating);
 
     const handleStarClick = (selectedRating) => {
-        setRating(selectedRating);
-        if (onRatingChange) {
-            onRatingChange(selectedRating);
+        // If the clicked star is already selected, deselect all stars
+        if (selectedRating === rating) {
+            setRating(0);
+        } 
+        else {
+            setRating(selectedRating);
         }
     };
+
+    useEffect(() => {
+        onRatingChange(rating)
+    }, [rating]);
 
     return (
         <div className='star-rating-container'>
@@ -20,7 +27,7 @@ const StarRating = ({ initialRating, onRatingChange }) => {
                 onClick={() => handleStarClick(star)}
                 className={star <= rating ? 'star selected' : 'star unselected'}
                 >
-                    &#9733; {/* Unicode character for a solid star */}
+                    <i className="bi bi-star-fill"></i>
                 </span>
             ))}
         </div>

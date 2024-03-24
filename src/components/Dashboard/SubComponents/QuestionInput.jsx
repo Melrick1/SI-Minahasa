@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMyContext } from '../../../MyContext.jsx';
 
 const QuestionInput = ({ docName }) => {
@@ -19,8 +19,13 @@ const QuestionInput = ({ docName }) => {
         e.preventDefault();
         setMessage('Loading...');
         await StoreQuestion(docName, submittedQuestion);
+        await setQuestion('')
         SetActivateForm(false);
     }
+
+    useEffect(() => {
+        setMessage(undefined)
+    }, [activateForm])
     
     return(
         <div className='inputCard'>

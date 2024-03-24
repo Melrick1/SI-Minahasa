@@ -5,7 +5,7 @@ import { doc, collection, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 
 const MyContext = createContext();
 
-export const PageStateProvider = ({ children }) => {
+export const PageContext = ({ children }) => {
     const [ boolRefresh , setBoolRefresh ] = useState(false)
 
     const RefreshData = () => {
