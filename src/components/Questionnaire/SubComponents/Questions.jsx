@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const Question = ({question, n, onAnswerChange}) =>{
-    const [checkedAnswer, setCheckedAnswer] = useState('')
+const Question = ({question, n, selectedAnswer, onAnswerChange}) =>{
+    const [checkedAnswer, setCheckedAnswer] = useState(selectedAnswer)
+
+    useEffect(() => { // Set initial checks
+        setCheckedAnswer(selectedAnswer);
+    }, [selectedAnswer]);
 
     const detectAnswerChange = async (event) => {
         const selectedOption = event.target.value;
         await setCheckedAnswer(selectedOption);
-        onAnswerChange(`question${n}`, selectedOption);
+        onAnswerChange(`answer${n}`, selectedOption);
     };
 
     return(

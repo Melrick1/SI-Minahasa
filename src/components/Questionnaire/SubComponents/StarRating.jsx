@@ -4,7 +4,11 @@ import './StarRating.css'
 const StarRating = ({ initialRating, onRatingChange }) => {
     const [rating, setRating] = useState(initialRating);
 
-    const handleStarClick = (selectedRating) => {
+    useEffect(() => { // Set initial rating
+        setRating(initialRating)
+    }, [initialRating]);
+
+    const handleStarClick = async (selectedRating) => {
         // If the clicked star is already selected, deselect all stars
         if (selectedRating === rating) {
             setRating(0);

@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { useMyContext } from '../../MyContext.jsx';
 import {Link} from 'react-router-dom'
 import {useNavigate} from 'react-router-dom';
 import { AuthMasyarakat } from './SignInFunctions/AuthFunction.jsx';
@@ -7,6 +8,9 @@ import usePasswordToggle from './SignInFunctions/ShowPassword.jsx';
 const LoginMasyarakat = () => {
     //React Router Navigation
     const navigate = useNavigate();
+
+    //My Context
+    const { setUserID } = useMyContext();
 
     //Show password
     const { showPassword1, handleTogglePassword1 } = usePasswordToggle();
@@ -18,7 +22,7 @@ const LoginMasyarakat = () => {
 
     const SignInHandler = async (e) => {
         e.preventDefault(); //prevent page reload on form submit
-        AuthMasyarakat(email, password, kantor, navigate, setErrorMessage);
+        AuthMasyarakat(email, password, kantor, navigate, setErrorMessage, setUserID);
     }
 
     return(

@@ -3,8 +3,11 @@ import {Link} from 'react-router-dom'
 import FetchQuestions from '../../../Dashboard/SubComponents/FetchQuestions.jsx';
 import StarRating from '../../SubComponents/StarRating.jsx';
 import Question from '../../SubComponents/Questions.jsx';
+import {StoreAnswers, FetchRatingAndComment, FetchAnswers} from '../../SubComponents/ResponsesDB.jsx';
+import { useMyContext } from '../../../../MyContext.jsx';
 
 const SKPAirmBawah = () =>{
+    const {userID} = useMyContext();
     const [answers, setAnswers] = useState({});
     const [comment, setComment] = useState('')
     const [rating, setRating] = useState(0)
@@ -12,9 +15,10 @@ const SKPAirmBawah = () =>{
     const [valuesArray, setValuesArray] = useState([]);
     const questionDoc = 'Questions SKP AirmBawah';
     const answerDoc = 'Answers SKP AirmBawah';
+    const [message, setMessage] = useState('')
 
     useEffect(() => {
-        const fetchFormattedData = async () => {
+        const fetchFormattedQuestions = async () => {
             const { numbers, values } = await FetchQuestions(questionDoc);
             setNumbersArray(numbers);
             setValuesArray(values);
@@ -26,7 +30,19 @@ const SKPAirmBawah = () =>{
             }
             setAnswers(prevAnswers => ({ ...prevAnswers, ...initialAnswers }));
         }
-        fetchFormattedData();
+
+        //fetch previously submitted responses
+        const fetchResponses = async () => {
+            const { prevRating, prevComment } = await FetchRatingAndComment(userID);
+            const innerFields = await FetchAnswers(userID, answerDoc);
+            setAnswers(innerFields)
+            setRating(prevRating);
+            setComment(prevComment);
+        }
+
+        console.log('UserID :', userID)
+        fetchFormattedQuestions();
+        fetchResponses();
     },[])
 
     const handleAnswerChange = async (number, answer) => {
@@ -51,8 +67,8 @@ const SKPAirmBawah = () =>{
     }, [answers, comment, rating]);
 
     const submitResponse = () => {
-        let userID = 'test'
-        StoreAnswers(userID, rating, comment, answerDoc, answers);
+        setMessage('Please Wait...')
+        StoreAnswers(rating, comment, answerDoc, answers, userID, setMessage);
     }
 
     return(
@@ -78,7 +94,8 @@ const SKPAirmBawah = () =>{
                         <Question 
                         key={numbersArray[index]} 
                         n={numbersArray[index]} 
-                        question={value} 
+                        question={value}
+                        selectedAnswer={answers[`answer${index+1}`]} 
                         onAnswerChange={handleAnswerChange}/>
                     ))}
                 </div>
@@ -95,6 +112,7 @@ const SKPAirmBawah = () =>{
                     />
                     <StarRating initialRating={0} onRatingChange={handleRatingChange} />
                 </div>
+                <p>&nbsp;{message}</p>
                 <button className='submit-response button' onClick={submitResponse}>Submit</button>
             </div>
         </section>

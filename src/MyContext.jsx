@@ -8,6 +8,18 @@ const MyContext = createContext();
 export const PageContext = ({ children }) => {
     const [ boolRefresh , setBoolRefresh ] = useState(false)
 
+    const [ userID, setUserID ] = useState(() => {
+        // Retrieve userID from session storage when component mounts
+        const storedUserID = sessionStorage.getItem('userID');
+        return storedUserID || ''; // Return storedUserID if exists, otherwise return an empty string
+    })
+
+    useEffect(() => {
+        // Set userID in session storage
+        sessionStorage.setItem('userID', userID);
+    }, [userID])
+
+
     const RefreshData = () => {
         if (boolRefresh == false) {
             setBoolRefresh(true)
@@ -79,7 +91,7 @@ export const PageContext = ({ children }) => {
     }
 
     return (
-        <MyContext.Provider value={{ boolRefresh, StoreQuestion, DeleteQuestion }}>
+        <MyContext.Provider value={{ boolRefresh, userID, setUserID, StoreQuestion, DeleteQuestion }}>
         {children}
         </MyContext.Provider>
     );

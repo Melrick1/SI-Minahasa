@@ -3,7 +3,7 @@ import { collection, getDocs, setDoc, query, where, doc } from 'firebase/firesto
 import { Auth, DB } from '../../../Firebase.js';
 
 {/* Masyarakat Authentication */}
-const AuthMasyarakat = async (email, password, kantor, navigate, setErrorMessage) => {
+const AuthMasyarakat = async (email, password, kantor, navigate, setErrorMessage, setUserID) => {
   try {
     // Sign in with email and password
     const userCredential = await signInWithEmailAndPassword(Auth, email, password);
@@ -18,6 +18,9 @@ const AuthMasyarakat = async (email, password, kantor, navigate, setErrorMessage
       if (userData.accType !== 'Masyarakat') {
         setErrorMessage("User ini bukan Masyarakat");
         return;
+      }
+      else {
+        setUserID(userCredential.user.uid)
       }
     }
     else{
