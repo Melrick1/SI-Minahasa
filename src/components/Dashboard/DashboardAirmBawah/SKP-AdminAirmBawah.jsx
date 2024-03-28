@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import { useMyContext } from '../../../MyContext';
 import QuestionInput from '../SubComponents/QuestionInput';
 import QuestionAdmin from '../SubComponents/QuestionAdmin';
-import FetchQuestions from '../SubComponents/FetchQuestions';
+import {FetchQuestions, FetchDashboardAnswers} from '../SubComponents/FetchQnA';
 
 const AdminSKPAirmBawah = () =>{
     const chartdata = [1,2,4,2]
@@ -13,12 +13,19 @@ const AdminSKPAirmBawah = () =>{
     const DBdoc = 'Questions SKP AirmBawah';
 
     useEffect(() => {
-        const fetchFormattedData = async () => {
+        const fetchFormattedQuestions = async () => {
             const { numbers, values } = await FetchQuestions(DBdoc);
             setNumbersArray(numbers);
             setValuesArray(values);
         }
-        fetchFormattedData();
+
+        const fetchAnswers = async () => {
+            const result = await FetchDashboardAnswers('docName1'); // Provide the desired docName
+            console.log(result)
+        };
+
+        fetchFormattedQuestions();
+        fetchAnswers();
     },[boolRefresh])
 
     return(

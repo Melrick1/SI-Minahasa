@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
-import FetchQuestions from '../../../Dashboard/SubComponents/FetchQuestions.jsx';
+import { FetchQuestions } from '../../../Dashboard/SubComponents/FetchQnA.jsx';
 import StarRating from '../../SubComponents/StarRating.jsx';
 import Question from '../../SubComponents/Questions.jsx';
 import { useMyContext } from '../../../../MyContext.jsx';
