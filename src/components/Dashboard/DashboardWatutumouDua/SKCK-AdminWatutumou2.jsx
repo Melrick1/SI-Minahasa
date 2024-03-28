@@ -10,17 +10,18 @@ const AdminSKCKWatutumouDua = () =>{
     const { boolRefresh } = useMyContext();
     const [numbersArray, setNumbersArray] = useState([]);
     const [valuesArray, setValuesArray] = useState([]);
-    const DBdoc = 'Questions SKCK WatutumouDua';
+    const questionDoc = 'Questions SKCK AirmBawah';
+    const answerDoc = 'Answers SKCK AirmBawah';
 
     useEffect(() => {
         const fetchFormattedQuestions = async () => {
-            const { numbers, values } = await FetchQuestions(DBdoc);
+            const { numbers, values } = await FetchQuestions(questionDoc);
             setNumbersArray(numbers);
             setValuesArray(values);
         }
 
         const fetchAnswers = async () => {
-            const result = await FetchDashboardAnswers('docName1'); // Provide the desired docName
+            const result = await FetchDashboardAnswers(answerDoc); // Provide the desired docName
             console.log(result)
         };
 
@@ -44,7 +45,7 @@ const AdminSKCKWatutumouDua = () =>{
             <div className='landingContent'>
                 <div className='line'></div>
                 <h2>Layanan Pembentukan Surat Keterangan SKCK</h2>
-                <QuestionInput docName={DBdoc}/>
+                <QuestionInput docName={questionDoc}/>
 
                 <div className="questionDisplay">
                     {valuesArray.map((value, index) => (
@@ -53,7 +54,7 @@ const AdminSKCKWatutumouDua = () =>{
                         n={numbersArray[index]} 
                         question={value} 
                         data={chartdata}
-                        docName={DBdoc}
+                        docName={questionDoc}
                         />
                     ))}
                 </div>
